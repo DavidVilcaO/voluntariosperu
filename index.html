@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-  
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:image" content="http://refugios.emergenciaperu/images/bg-banner.jpg" />
+
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Refugios Perú</title>
 
@@ -65,9 +67,9 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-             
-              
-        
+
+
+
               <!--<li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Shop<span class="caret"></span></a>
                 <ul class="dropdown-menu">
@@ -98,7 +100,7 @@
               <h2>REFUGIOS PERÚ</h2>
               <ul>
                 <li><span class="flaticon-tool"></span>Apoyándonos entre peruanos</li>
-                
+
               </ul>
               <div id="clockdiv" style="visibility:hidden;">
                 <div class="clock-item">
@@ -140,7 +142,7 @@
           <!-- <li><a href="#" class="default-button">Ser Voluntario</a></li> -->
           <li><a href="#" class="default-button" data-backdrop="static" data-keyboard="false" data-toggle="modal" data-target="#myModalNorm">Registrar Refugio</a></li>
         </ul>
-      
+
       </div><!-- container -->
     </section>
     <!-- About end here -->
@@ -151,11 +153,11 @@
 
 
 
-   
 
 
 
-  
+
+
 
 
 
@@ -245,7 +247,7 @@
 
     <!-- Google Map -->
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyAQlXnmyNPAeN3c3HNyWoUMqDk6bDF31Cg"></script>
-    
+
 
     <script src="assets/js/map_functions.js"></script>
     <script src="assets/js/map_functions_travel.js"></script>
@@ -258,8 +260,8 @@
     <div class="modal fade" id="myModalNorm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            
-            
+
+
     <div class="modal-body">
       <button style="font-size: 2.5rem;" type="button" class="close" data-dismiss="modal">
         <span aria-hidden="true">&times;</span>
@@ -281,7 +283,7 @@
             <div class="form-group">
               <input required="required" class="form-control input-cool" id="cel" placeholder="*Número de contacto" type="text">
             </div>
-          </div>         
+          </div>
         </div>
         <div class="row">
           <div class="col-md-6">
@@ -293,13 +295,13 @@
             <div class="form-group">
               <input required="required" class="form-control input-cool" id="ema" placeholder="*Email" type="email">
             </div>
-          </div>         
+          </div>
         </div>
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
               <select required="required" class="form-control input-cool" id="type">
-                <option value="0">*Tipo de espacio</option>  
+                <option value="0">*Tipo de espacio</option>
                 <option value="1">Cuarto</option>
                 <option value="2">Garage</option>
                 <option value="3">Sala</option>
@@ -312,7 +314,7 @@
             <div class="form-group">
               <input required="required" class="form-control input-cool" id="many" placeholder="*Cuántas personas puedes albergar?" type="text">
             </div>
-          </div>         
+          </div>
         </div>
         <div class="row">
           <div class="col-md-12">
@@ -361,12 +363,12 @@
         styles: styleArray,
         scrollwheel: false,
         backgroundColor: 'transparent',
-        mapTypeControl: false,    
+        mapTypeControl: false,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       });
 
       function initAutocomplete() {
-          
+
 
           // Create the search box and link it to the UI element.
           var input = document.getElementById('_dir');
@@ -446,7 +448,7 @@
             $('#_dir').val('');
             alert('No es posible determinar esta zona, por favor verifique la ubicación ingresada.');
           }
-          
+
         });
       }
 
