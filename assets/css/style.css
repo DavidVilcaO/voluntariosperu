@@ -573,7 +573,7 @@ header{
     margin: 0px;
 }
 header .main-menu{
-	background-color: #65ac4c;
+	background-color: #FF5139;
 	min-height: 90px;
 }
 header .main-menu .navbar-brand{
@@ -871,7 +871,7 @@ header .menu-four.menu-four-bg ul li ul{
     bottom: 0;
     height: 120px;
     width: 100%;
-    background-color: #65ac4c;
+    background-color: #FF5139;
 }
 .banner .content-right{
     width: 60%;
@@ -963,7 +963,7 @@ header .menu-four.menu-four-bg ul li ul{
 }
 .banner .content-right .default-button:hover, .banner .content-right .default-button:focus{
     text-decoration: none;
-    background-color: #65ac4c;
+    background-color: #FF5139;
     color: #fff;
 }
 .banner-two{
@@ -1195,7 +1195,7 @@ header .menu-four.menu-four-bg ul li ul{
 /*  04  - About
 ----------------------------------------------*/
 .about .section-header h2{
-    color: #65ac4c;
+    color: #FF5139;
     margin-bottom: 10px;
 }
 .about .section-header p{
@@ -1228,7 +1228,7 @@ header .menu-four.menu-four-bg ul li ul{
     color: #fff;
 }
 .about .about-button li:last-child a{
-    background-color: #65ac4c
+    background-color: #FF5139
 }
 .about .about-button li:last-child a:hover{
     background-color: #ff9822;
