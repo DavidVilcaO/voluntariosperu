@@ -95,12 +95,12 @@
           </div><!-- content-left -->
           <div class="content-right">
             <div class="content">
-              <h2>VOLUNTARIOS PERU</h2>
+              <h2>VOLUNTARIOS PERÚ</h2>
               <ul>
                 <li><span class="flaticon-tool"></span>Apoyándonos entre peruanos</li>
                 
               </ul>
-              <div id="clockdiv" style="visibility:hidden; width:2rem;">
+              <div id="clockdiv" style="visibility:hidden;">
                 <div class="clock-item">
                   <span class="days"></span>
                   <p class="smalltext">Days</p>
@@ -118,8 +118,8 @@
                   <p class="smalltext">Seconds</p>
                 </div>
               </div>
-              <a href="#" class="banner-button default-button">Ser Voluntario</a>
-               <a href="#" class="banner-button default-button" data-backdrop="static" data-keyboard="false" data-toggle="modal" data-target="#myModalNorm">Registrar Refugio</a>
+              <!-- <a href="#" class="banner-button default-button">Ser Voluntario</a> -->
+              <a href="#" class="banner-button default-button" data-backdrop="static" data-keyboard="false" data-toggle="modal" data-target="#myModalNorm">Registrar Refugio</a>
             </div>
           </div><!-- content-right -->
         </div><!-- banner-content -->
@@ -133,11 +133,11 @@
       <div class="container">
         <div class="section-header text-center">
           <h2>Voluntarios Perú</h2>
-          <p><em>Dona tu tiempo o tu espacio, has el cambio</em></p>
+          <p><em>Dona tu tiempo o un espacio, haz el cambio</em></p>
         </div>
-        <p>Dona tu hogar para refugiar a una persona afectada temporalmente, si te encuentras cerca las zonas donde se sucitarón los huaicos e inundaciones, puedes dar espacio temporal a personas que necesitan un techo para dormir o guardar sus pertencias.Solo tienes que completar el formulario y estar atento a cualquier llamada de nuestras organicaciones de voluntarios para coordinar los horarios de ayuda.</p>
+        <p>Si te encuentras cerca las zonas donde se sucitarón los huaicos e inundaciones, puedes dar espacio temporal a personas que más lo necesitan, un techo para dormir o guardar sus pertencias. Solo tienes que completar el formulario y estar atento a cualquier llamada de nuestras organizaciones de voluntarios para coordinar los horarios de ayuda.</p>
         <ul class="about-button">
-          <li><a href="#" class="default-button">Ser Voluntario</a></li>
+          <!-- <li><a href="#" class="default-button">Ser Voluntario</a></li> -->
           <li><a href="#" class="default-button" data-backdrop="static" data-keyboard="false" data-toggle="modal" data-target="#myModalNorm">Registrar Refugio</a></li>
         </ul>
       
@@ -176,7 +176,7 @@
     <section class="newsletter">
       <div class="container">
         <p>Suscribirte</p>
-        <form action="http://demos.codexcoder.com/">
+        <form action="#">
           <input type="email" name="email" placeholder="Ingresa tu e-mail aquí">
           <input type="submit" name="submit" value="Subscribirme">
         </form>
@@ -199,7 +199,7 @@
             <li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
             <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
           </ul>
-          <p>Copyright &copy; 2017. Design and Development by <a href="#">Voluntarios Perú</a></p>
+          <p>Copyright &copy; 2017. Diseñado y desarrollado por <a href="#">Voluntarios Perú</a></p>
         </div>
       </div>
     </footer>
@@ -267,7 +267,7 @@
       </button>
       <h3 style="font-size: 36px;color: #65ac4c;text-align: center;margin-bottom: 1rem;">¡Gracias por ayudar!</h3>
       <p class="toHide">
-        Brindaremos tu información a instituciones que están en contacto con los afectados y se comunicarán contigo para coordinar en caso una persona necesite refugio.
+        Brindaremos tu información a instituciones que están en contacto con los afectados y se comunicarán contigo para coordinar en caso una persona necesite refugio. Esta información no será pública, solo estará disponible a las organizaciones correspondientes.
       </p>
       <form action="#" role="form" class="toHide">
 
@@ -353,6 +353,8 @@
         }
       ];
 
+      var geocoder = new google.maps.Geocoder();
+
       var map = new google.maps.Map(document.getElementById('_map'), {
         center: {lat: 1.046374, lng: -99.042793},
         zoom: 4,
@@ -397,7 +399,7 @@
             var bounds = new google.maps.LatLngBounds();
             places.forEach(function(place) {
               var icon = {
-                url: 'http://maps.google.com/mapfiles/ms/micons/rangerstation.png',
+                url: 'images/house.png',
                 size: new google.maps.Size(71, 71),
                 origin: new google.maps.Point(0, 0),
                 anchor: new google.maps.Point(17, 34),
@@ -408,13 +410,17 @@
               $('#lng').val(place.geometry.location.lng());
               // Create a marker for each place.
               markers.push(new google.maps.Marker({
-                //draggable:true,
-                //animation: google.maps.Animation.DROP,
+                draggable:true,
+                animation: google.maps.Animation.DROP,
                 map: map,
                 icon: icon,
                 title: place.name,
                 position: place.geometry.location
               }));
+
+              google.maps.event.addListener(markers[0], 'dragend', function() {
+                geocodePosition(markers[0].getPosition());
+              });
 
               if (place.geometry.viewport) {
                 // Only geocodes have viewport.
@@ -426,11 +432,27 @@
             map.fitBounds(bounds);
           });
           // [END region_getplaces]
-        }
+      }
 
-        $('#myModalNorm').on('shown.bs.modal', function () {
-          google.maps.event.trigger(map, "resize");
+      function geocodePosition(pos) {
+        geocoder.geocode({
+          latLng: pos
+        }, function(responses) {
+          if (responses && responses.length > 0) {
+            $('#_dir').val(responses[0].formatted_address);
+            $('#lat').val(responses[0].geometry.location.lat());
+            $('#lng').val(responses[0].geometry.location.lng());
+          } else {
+            $('#_dir').val('');
+            alert('No es posible determinar esta zona, por favor verifique la ubicación ingresada.');
+          }
+          
         });
+      }
+
+      $('#myModalNorm').on('shown.bs.modal', function () {
+        google.maps.event.trigger(map, "resize");
+      });
 
 
     </script>
